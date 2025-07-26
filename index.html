@@ -1,0 +1,826 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ashish Karna | Senior iOS Engineer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#003366', // dark blue
+                        secondary: '#0066cc', // medium blue
+                        accent: '#f0f7ff', // light blue background
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #003366 0%, #0066cc 100%);
+        }
+        
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 51, 102, 0.2);
+        }
+        
+        .skill-pill {
+            transition: all 0.3s ease;
+        }
+        
+        .skill-pill:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 2px;
+            background-color: #0066cc;
+        }
+        
+        .timeline-dot {
+            position: absolute;
+            left: -9px;
+            top: 24px;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background-color: #0066cc;
+            border: 3px solid white;
+        }
+        
+        @media (max-width: 768px) {
+            .timeline-item::before {
+                left: 20px;
+            }
+            .timeline-dot {
+                left: 11px;
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="gradient-bg text-white shadow-lg sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold">AK</a>
+            <div class="hidden md:flex space-x-8">
+                <a href="#about" class="hover:text-gray-200 transition">About</a>
+                <a href="#experience" class="hover:text-gray-200 transition">Experience</a>
+                <a href="#skills" class="hover:text-gray-200 transition">Skills</a>
+                <a href="#projects" class="hover:text-gray-200 transition">Projects</a>
+                <a href="#contact" class="hover:text-gray-200 transition">Contact</a>
+            </div>
+            <button id="mobile-menu-button" class="md:hidden text-white focus:outline-none">
+                <i class="fas fa-bars text-xl"></i>
+            </button>
+        </div>
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="md:hidden hidden bg-primary">
+            <div class="container mx-auto px-4 py-3 flex flex-col space-y-3">
+                <a href="#about" class="hover:text-gray-200 transition">About</a>
+                <a href="#experience" class="hover:text-gray-200 transition">Experience</a>
+                <a href="#skills" class="hover:text-gray-200 transition">Skills</a>
+                <a href="#projects" class="hover:text-gray-200 transition">Projects</a>
+                <a href="#contact" class="hover:text-gray-200 transition">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="gradient-bg text-white py-20">
+        <div class="container mx-auto px-4 flex flex-col md:flex-row items-center">
+            <div class="md:w-1/2 text-center md:text-left mb-10 md:mb-0">
+                <h1 class="text-4xl md:text-5xl font-bold mb-4">Ashish Karna</h1>
+                <h2 class="text-2xl md:text-3xl font-semibold mb-6">Senior iOS Engineer</h2>
+                <p class="text-lg mb-8">Building elegant, high-performance iOS applications with 9+ years of experience.</p>
+                <div class="flex flex-wrap justify-center md:justify-start gap-4">
+                    <a href="#contact" class="bg-white text-primary px-6 py-3 rounded-full font-medium hover:bg-gray-100 transition">Get in Touch</a>
+                    <a href="#projects" class="border-2 border-white px-6 py-3 rounded-full font-medium hover:bg-white hover:text-primary transition">View Projects</a>
+                </div>
+            </div>
+            <div class="md:w-1/2 flex justify-center">
+                <div class="w-64 h-64 rounded-full bg-white p-3 shadow-lg">
+                    <div class="w-full h-full rounded-full overflow-hidden bg-gray-200 flex items-center justify-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-32 h-32 text-gray-400">
+                            <path fill-rule="evenodd" d="M7.5 6a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zM3.751 20.105a8.25 8.25 0 0116.498 0 .75.75 0 01-.437.695A18.683 18.683 0 0112 22.5c-2.786 0-5.433-.608-7.812-1.7a.75.75 0 01-.437-.695z" clip-rule="evenodd" />
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12 text-primary">About Me</h2>
+            <div class="max-w-3xl mx-auto">
+                <p class="text-lg text-gray-700 mb-6">
+                    Results-driven Senior iOS Engineer with 9+ years of experience in designing and developing high-performance iOS applications. Skilled in Swift and Objective-C, with expertise in Clean Architecture, MVVM, and CI/CD pipelines.
+                </p>
+                <p class="text-lg text-gray-700 mb-6">
+                    I have a proven track record of delivering scalable, secure solutions that optimize user experience and drive business growth. My passion lies in creating elegant, efficient code that solves real-world problems.
+                </p>
+                <p class="text-lg text-gray-700">
+                    Based in Kathmandu, Nepal, I work remotely with clients worldwide to build exceptional mobile experiences.
+                </p>
+                
+                <div class="mt-10 flex flex-wrap justify-center gap-4">
+                    <a href="https://www.linkedin.com/in/ashish-karna-177b7187/" target="_blank" class="flex items-center gap-2 bg-accent text-primary px-5 py-3 rounded-lg hover:bg-primary hover:text-white transition">
+                        <i class="fab fa-linkedin"></i>
+                        <span>LinkedIn</span>
+                    </a>
+                    <a href="https://github.com/ashishkarna7" target="_blank" class="flex items-center gap-2 bg-accent text-primary px-5 py-3 rounded-lg hover:bg-primary hover:text-white transition">
+                        <i class="fab fa-github"></i>
+                        <span>GitHub</span>
+                    </a>
+                    <a href="#" class="flex items-center gap-2 bg-accent text-primary px-5 py-3 rounded-lg hover:bg-primary hover:text-white transition" id="resume-btn">
+                        <i class="fas fa-file-alt"></i>
+                        <span>Resume</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="py-20 bg-accent">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12 text-primary">Work Experience</h2>
+            
+            <div class="max-w-4xl mx-auto">
+                <!-- Timeline -->
+                <div class="relative pl-8 md:pl-12">
+                    <!-- Lively Software Senior -->
+                    <div class="timeline-item relative pb-12">
+                        <div class="timeline-dot"></div>
+                        <div class="bg-white p-6 rounded-lg shadow-md ml-6">
+                            <div class="flex flex-col md:flex-row md:justify-between md:items-center mb-4">
+                                <h3 class="text-xl font-bold text-primary">Senior iOS Engineer</h3>
+                                <div class="flex items-center mt-2 md:mt-0">
+                                    <span class="text-gray-600 mr-3">Lively Software (Remote)</span>
+                                    <span class="bg-primary text-white text-sm px-3 py-1 rounded-full">Dec 2020 - Present</span>
+                                </div>
+                            </div>
+                            <ul class="list-disc pl-5 text-gray-700 space-y-2">
+                                <li>Led the development 10+ high-performance iOS applications, resulting in a significant increase in user engagement and a reduction in churn.</li>
+                                <li>Designed and implemented a modular framework, streamlining development processes and enhancing scalability.</li>
+                                <li>Refactored legacy codebases using Clean Architecture and MVVM, improving maintainability and reducing bugs.</li>
+                                <li>Optimized app performance with GCD, async/await, NSLock, and managed memory by resolving strong retain cycles.</li>
+                                <li>Integrated Keychain Services to enhance data security and compliance with industry standards.</li>
+                                <li>Established CI/CD pipelines, improving deployment efficiency and reducing time to market.</li>
+                                <li>Mentored a team of 5 developers, fostering collaboration and improving overall code quality.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <!-- Lively Software iOS Engineer -->
+                    <div class="timeline-item relative pb-12">
+                        <div class="timeline-dot"></div>
+                        <div class="bg-white p-6 rounded-lg shadow-md ml-6">
+                            <div class="flex flex-col md:flex-row md:justify-between md:items-center mb-4">
+                                <h3 class="text-xl font-bold text-primary">iOS Engineer</h3>
+                                <div class="flex items-center mt-2 md:mt-0">
+                                    <span class="text-gray-600 mr-3">Lively Software (Remote)</span>
+                                    <span class="bg-primary text-white text-sm px-3 py-1 rounded-full">Dec 2018 - Dec 2020</span>
+                                </div>
+                            </div>
+                            <ul class="list-disc pl-5 text-gray-700 space-y-2">
+                                <li>Implemented Single Sign-On (SSO) using OAuth2, enhancing security for over 90,000 users.</li>
+                                <li>Maintained high code quality by adhering to SOLID principles and effective version control practices.</li>
+                                <li>Successfully delivered 10 iOS applications on time, consistently meeting project deadlines.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <!-- EB Pearls iOS Engineer -->
+                    <div class="timeline-item relative pb-12">
+                        <div class="timeline-dot"></div>
+                        <div class="bg-white p-6 rounded-lg shadow-md ml-6">
+                            <div class="flex flex-col md:flex-row md:justify-between md:items-center mb-4">
+                                <h3 class="text-xl font-bold text-primary">iOS Engineer</h3>
+                                <div class="flex items-center mt-2 md:mt-0">
+                                    <span class="text-gray-600 mr-3">EB Pearls Pty Ltd, Nepal</span>
+                                    <span class="bg-primary text-white text-sm px-3 py-1 rounded-full">Oct 2016 - Dec 2018</span>
+                                </div>
+                            </div>
+                            <ul class="list-disc pl-5 text-gray-700 space-y-2">
+                                <li>Developed 3 user-centric iOS applications, resulting in increased customer satisfaction and positive user feedback.</li>
+                                <li>Leveraged MVVM and RxSwift to enhance application responsiveness, significantly improving user experience.</li>
+                                <li>Mentored junior developers, contributing to improved team efficiency and faster project delivery.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <!-- EB Pearls Junior iOS Engineer -->
+                    <div class="timeline-item relative">
+                        <div class="timeline-dot"></div>
+                        <div class="bg-white p-6 rounded-lg shadow-md ml-6">
+                            <div class="flex flex-col md:flex-row md:justify-between md:items-center mb-4">
+                                <h3 class="text-xl font-bold text-primary">Junior iOS Engineer</h3>
+                                <div class="flex items-center mt-2 md:mt-0">
+                                    <span class="text-gray-600 mr-3">EB Pearls Pty Ltd, Nepal</span>
+                                    <span class="bg-primary text-white text-sm px-3 py-1 rounded-full">Oct 2015 - Dec 2016</span>
+                                </div>
+                            </div>
+                            <ul class="list-disc pl-5 text-gray-700 space-y-2">
+                                <li>Contributed to the development of 6 iOS applications, integrating Core Location and MapKit to enhance functionality.</li>
+                                <li>Designed responsive UIs using auto-layout constraints, improving usability and user satisfaction.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12 text-primary">Technical Skills</h2>
+            
+            <div class="max-w-4xl mx-auto">
+                <!-- Languages -->
+                <div class="mb-10">
+                    <h3 class="text-xl font-semibold mb-4 text-primary">Programming Languages</h3>
+                    <div class="flex flex-wrap gap-3">
+                        <span class="skill-pill bg-accent text-primary px-4 py-2 rounded-full font-medium">Swift</span>
+                        <span class="skill-pill bg-accent text-primary px-4 py-2 rounded-full font-medium">Objective-C</span>
+                        <span class="skill-pill bg-accent text-primary px-4 py-2 rounded-full font-medium">SwiftUI</span>
+                        <span class="skill-pill bg-accent text-primary px-4 py-2 rounded-full font-medium">C++</span>
+                    </div>
+                </div>
+                
+                <!-- Frameworks & Libraries -->
+                <div class="mb-10">
+                    <h3 class="text-xl font-semibold mb-4 text-primary">Frameworks & Libraries</h3>
+                    <div class="flex flex-wrap gap-3">
+                        <span class="skill-pill bg-accent text-primary px-4 py-2 rounded-full font-medium">UIKit</span>
+                        <span class="skill-pill bg-accent text-primary px-4 py-2 rounded-full font-medium">Core Data</span>
+                        <span class="skill-pill bg-accent text-primary px-4 py-2 rounded-full font-medium">Core Animation</span>
+                        <span class="skill-pill bg-accent text-primary px-4 py-2 rounded-full font-medium">Core Location</span>
+                        <span class="skill-pill bg-accent text-primary px-4 py-2 rounded-full font-medium">MapKit</span>
+                        <span class="skill-pill bg-accent text-primary px-4 py-2 rounded-full font-medium">AVFoundation</span>
+                        <span class="skill-pill bg-accent text-primary px-4 py-2 rounded-full font-medium">RxSwift</span>
+                        <span class="skill-pill bg-accent text-primary px-4 py-2 rounded-full font-medium">Combine</span>
+                    </div>
+                </div>
+                
+                <!-- Architecture & Patterns -->
+                <div class="mb-10">
+                    <h3 class="text-xl font-semibold mb-4 text-primary">Architecture & Patterns</h3>
+                    <div class="flex flex-wrap gap-3">
+                        <span class="skill-pill bg-accent text-primary px-4 py-2 rounded-full font-medium">MVVM</span>
+                        <span class="skill-pill bg-accent text-primary px-4 py-2 rounded-full font-medium">Clean Architecture</span>
+                        <span class="skill-pill bg-accent text-primary px-4 py-2 rounded-full font-medium">MVC</span>
+                        <span class="skill-pill bg-accent text-primary px-4 py-2 rounded-full font-medium">SOLID Principles</span>
+                        <span class="skill-pill bg-accent text-primary px-4 py-2 rounded-full font-medium">Design Patterns</span>
+                        <span class="skill-pill bg-accent text-primary px-4 py-2 rounded-full font-medium">Protocol-Oriented Programming</span>
+                    </div>
+                </div>
+                
+                <!-- Tools & Technologies -->
+                <div>
+                    <h3 class="text-xl font-semibold mb-4 text-primary">Tools & Technologies</h3>
+                    <div class="flex flex-wrap gap-3">
+                        <span class="skill-pill bg-accent text-primary px-4 py-2 rounded-full font-medium">Xcode</span>
+                        <span class="skill-pill bg-accent text-primary px-4 py-2 rounded-full font-medium">Git</span>
+                        <span class="skill-pill bg-accent text-primary px-4 py-2 rounded-full font-medium">CI/CD</span>
+                        <span class="skill-pill bg-accent text-primary px-4 py-2 rounded-full font-medium">Fastlane</span>
+                        <span class="skill-pill bg-accent text-primary px-4 py-2 rounded-full font-medium">CocoaPods</span>
+                        <span class="skill-pill bg-accent text-primary px-4 py-2 rounded-full font-medium">Swift Package Manager</span>
+                        <span class="skill-pill bg-accent text-primary px-4 py-2 rounded-full font-medium">Firebase</span>
+                        <span class="skill-pill bg-accent text-primary px-4 py-2 rounded-full font-medium">RESTful APIs</span>
+                        <span class="skill-pill bg-accent text-primary px-4 py-2 rounded-full font-medium">GraphQL</span>
+                        <span class="skill-pill bg-accent text-primary px-4 py-2 rounded-full font-medium">OAuth2</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-20 bg-accent">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12 text-primary">Featured Projects</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Project 1 -->
+                <div class="project-card bg-white rounded-xl overflow-hidden shadow-lg transition duration-300">
+                    <div class="h-48 bg-gradient-to-r from-primary to-secondary flex items-center justify-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-20 w-20 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
+                        </svg>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-primary mb-2">E-Commerce App</h3>
+                        <p class="text-gray-600 mb-4">A feature-rich shopping application with secure payment integration, real-time inventory tracking, and personalized recommendations.</p>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="text-xs bg-accent text-primary px-2 py-1 rounded">Swift</span>
+                            <span class="text-xs bg-accent text-primary px-2 py-1 rounded">MVVM</span>
+                            <span class="text-xs bg-accent text-primary px-2 py-1 rounded">Core Data</span>
+                            <span class="text-xs bg-accent text-primary px-2 py-1 rounded">Firebase</span>
+                        </div>
+                        <button class="view-project-btn text-primary font-medium hover:underline">View Details</button>
+                    </div>
+                </div>
+                
+                <!-- Project 2 -->
+                <div class="project-card bg-white rounded-xl overflow-hidden shadow-lg transition duration-300">
+                    <div class="h-48 bg-gradient-to-r from-primary to-secondary flex items-center justify-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-20 w-20 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7" />
+                        </svg>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-primary mb-2">Navigation & Maps App</h3>
+                        <p class="text-gray-600 mb-4">A location-based service application with real-time navigation, custom map overlays, and point-of-interest discovery.</p>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="text-xs bg-accent text-primary px-2 py-1 rounded">Swift</span>
+                            <span class="text-xs bg-accent text-primary px-2 py-1 rounded">MapKit</span>
+                            <span class="text-xs bg-accent text-primary px-2 py-1 rounded">Core Location</span>
+                            <span class="text-xs bg-accent text-primary px-2 py-1 rounded">Clean Architecture</span>
+                        </div>
+                        <button class="view-project-btn text-primary font-medium hover:underline">View Details</button>
+                    </div>
+                </div>
+                
+                <!-- Project 3 -->
+                <div class="project-card bg-white rounded-xl overflow-hidden shadow-lg transition duration-300">
+                    <div class="h-48 bg-gradient-to-r from-primary to-secondary flex items-center justify-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-20 w-20 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v10.764a1 1 0 01-1.447.894L15 18M5 18l-4.553-2.276A1 1 0 010 14.618V3.382a1 1 0 011.447-.894L5 4m0 14V4m6 14l4.553 2.276A1 1 0 0016.382 21H7.618a1 1 0 01-.894-1.447L11 18m0 0V4" />
+                        </svg>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-primary mb-2">Media Streaming App</h3>
+                        <p class="text-gray-600 mb-4">A high-performance media application with adaptive streaming, offline playback, and personalized content recommendations.</p>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="text-xs bg-accent text-primary px-2 py-1 rounded">Swift</span>
+                            <span class="text-xs bg-accent text-primary px-2 py-1 rounded">AVFoundation</span>
+                            <span class="text-xs bg-accent text-primary px-2 py-1 rounded">Combine</span>
+                            <span class="text-xs bg-accent text-primary px-2 py-1 rounded">MVVM</span>
+                        </div>
+                        <button class="view-project-btn text-primary font-medium hover:underline">View Details</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12">
+                <a href="#" class="inline-block bg-primary text-white px-6 py-3 rounded-lg hover:bg-secondary transition">View All Projects</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12 text-primary">Get In Touch</h2>
+            
+            <div class="max-w-4xl mx-auto flex flex-col md:flex-row gap-10">
+                <div class="md:w-1/2">
+                    <form id="contact-form" class="space-y-6">
+                        <div>
+                            <label for="name" class="block text-gray-700 mb-2">Name</label>
+                            <input type="text" id="name" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary">
+                        </div>
+                        <div>
+                            <label for="email" class="block text-gray-700 mb-2">Email</label>
+                            <input type="email" id="email" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary">
+                        </div>
+                        <div>
+                            <label for="message" class="block text-gray-700 mb-2">Message</label>
+                            <textarea id="message" rows="5" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"></textarea>
+                        </div>
+                        <button type="submit" class="bg-primary text-white px-6 py-3 rounded-lg hover:bg-secondary transition">Send Message</button>
+                    </form>
+                </div>
+                
+                <div class="md:w-1/2 bg-accent p-8 rounded-lg">
+                    <h3 class="text-xl font-bold text-primary mb-6">Contact Information</h3>
+                    
+                    <div class="space-y-4">
+                        <div class="flex items-start">
+                            <div class="bg-primary p-3 rounded-full text-white mr-4">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-medium text-gray-900">Location</h4>
+                                <p class="text-gray-600">Kathmandu, Nepal</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="bg-primary p-3 rounded-full text-white mr-4">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-medium text-gray-900">Email</h4>
+                                <a href="mailto:ashish.karna7@gmail.com" class="text-gray-600 hover:text-primary">ashish.karna7@gmail.com</a>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="bg-primary p-3 rounded-full text-white mr-4">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-medium text-gray-900">Phone</h4>
+                                <p class="text-gray-600">Available upon request</p>
+                            </div>
+                        </div>
+                        
+                        <div class="pt-6">
+                            <h4 class="font-medium text-gray-900 mb-4">Connect with me</h4>
+                            <div class="flex space-x-4">
+                                <a href="https://www.linkedin.com/in/ashish-karna-177b7187/" target="_blank" class="bg-primary text-white p-3 rounded-full hover:bg-secondary transition">
+                                    <i class="fab fa-linkedin-in"></i>
+                                </a>
+                                <a href="https://github.com/ashishkarna7" target="_blank" class="bg-primary text-white p-3 rounded-full hover:bg-secondary transition">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                                <a href="#" class="bg-primary text-white p-3 rounded-full hover:bg-secondary transition">
+                                    <i class="fab fa-twitter"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="gradient-bg text-white py-10">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-6 md:mb-0">
+                    <h2 class="text-2xl font-bold">Ashish Karna</h2>
+                    <p class="text-gray-300">Senior iOS Engineer</p>
+                </div>
+                
+                <div class="flex space-x-6">
+                    <a href="#about" class="hover:text-gray-300 transition">About</a>
+                    <a href="#experience" class="hover:text-gray-300 transition">Experience</a>
+                    <a href="#skills" class="hover:text-gray-300 transition">Skills</a>
+                    <a href="#projects" class="hover:text-gray-300 transition">Projects</a>
+                    <a href="#contact" class="hover:text-gray-300 transition">Contact</a>
+                </div>
+            </div>
+            
+            <div class="border-t border-blue-700 mt-8 pt-8 text-center">
+                <p>&copy; 2023 Ashish Karna. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Project Modal -->
+    <div id="project-modal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-xl max-w-3xl w-full max-h-[90vh] overflow-y-auto">
+            <div class="p-6">
+                <div class="flex justify-between items-center mb-6">
+                    <h3 class="text-2xl font-bold text-primary" id="modal-title">Project Title</h3>
+                    <button id="close-modal" class="text-gray-500 hover:text-gray-700">
+                        <i class="fas fa-times text-xl"></i>
+                    </button>
+                </div>
+                
+                <div id="modal-content">
+                    <!-- Content will be dynamically inserted here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Resume Modal -->
+    <div id="resume-modal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-xl max-w-4xl w-full max-h-[90vh] overflow-y-auto">
+            <div class="p-6">
+                <div class="flex justify-between items-center mb-6">
+                    <h3 class="text-2xl font-bold text-primary">Resume</h3>
+                    <button id="close-resume-modal" class="text-gray-500 hover:text-gray-700">
+                        <i class="fas fa-times text-xl"></i>
+                    </button>
+                </div>
+                
+                <div class="space-y-8">
+                    <div class="text-center">
+                        <h1 class="text-3xl font-bold">Ashish Karna</h1>
+                        <p class="text-xl font-semibold text-gray-700">Senior iOS Engineer</p>
+                        <p class="text-gray-600">Kathmandu, Nepal</p>
+                        <div class="flex justify-center space-x-4 mt-3">
+                            <a href="https://www.linkedin.com/in/ashish-karna-177b7187/" class="text-primary hover:underline">LinkedIn</a>
+                            <a href="https://github.com/ashishkarna7" class="text-primary hover:underline">GitHub</a>
+                            <a href="mailto:ashish.karna7@gmail.com" class="text-primary hover:underline">ashish.karna7@gmail.com</a>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <h2 class="text-xl font-bold text-primary border-b border-gray-300 pb-2 mb-3">Professional Summary</h2>
+                        <p class="text-gray-700">Results-driven Senior iOS Engineer with 9+ years of experience in designing and developing high-performance iOS applications. Skilled in Swift and Objective-C, with expertise in Clean Architecture, MVVM, and CI/CD pipelines. Proven track record of delivering scalable, secure solutions that optimize user experience and drive business growth.</p>
+                    </div>
+                    
+                    <div>
+                        <h2 class="text-xl font-bold text-primary border-b border-gray-300 pb-2 mb-3">Work Experience</h2>
+                        
+                        <div class="mb-6">
+                            <div class="flex justify-between">
+                                <h3 class="font-bold">Senior iOS Engineer</h3>
+                                <p class="text-gray-600">Dec 2020 - Present</p>
+                            </div>
+                            <p class="text-gray-700 italic">Lively Software (Remote)</p>
+                            <ul class="list-disc pl-5 mt-2 text-gray-700">
+                                <li>Led the development 10+ high-performance iOS applications, resulting in a significant increase in user engagement and a reduction in churn.</li>
+                                <li>Designed and implemented a modular framework, streamlining development processes and enhancing scalability.</li>
+                                <li>Refactored legacy codebases using Clean Architecture and MVVM, improving maintainability and reducing bugs.</li>
+                                <li>Optimized app performance with GCD, async/await, NSLock, and managed memory by resolving strong retain cycles.</li>
+                                <li>Integrated Keychain Services to enhance data security and compliance with industry standards.</li>
+                                <li>Established CI/CD pipelines, improving deployment efficiency and reducing time to market.</li>
+                                <li>Mentored a team of 5 developers, fostering collaboration and improving overall code quality.</li>
+                                <li>Authored comprehensive Statements of Work (SOW) and Proof of Concept (POC) documents, aligning project goals with client expectations.</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="mb-6">
+                            <div class="flex justify-between">
+                                <h3 class="font-bold">iOS Engineer</h3>
+                                <p class="text-gray-600">Dec 2018 - Dec 2020</p>
+                            </div>
+                            <p class="text-gray-700 italic">Lively Software (Remote)</p>
+                            <ul class="list-disc pl-5 mt-2 text-gray-700">
+                                <li>Implemented Single Sign-On (SSO) using OAuth2, enhancing security for over 90,000 users.</li>
+                                <li>Maintained high code quality by adhering to SOLID principles and effective version control practices.</li>
+                                <li>Successfully delivered 10 iOS applications on time, consistently meeting project deadlines.</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="mb-6">
+                            <div class="flex justify-between">
+                                <h3 class="font-bold">iOS Engineer</h3>
+                                <p class="text-gray-600">Oct 2016 - Dec 2018</p>
+                            </div>
+                            <p class="text-gray-700 italic">EB Pearls Pty Ltd, Nepal</p>
+                            <ul class="list-disc pl-5 mt-2 text-gray-700">
+                                <li>Developed 3 user-centric iOS applications, resulting in increased customer satisfaction and positive user feedback.</li>
+                                <li>Leveraged MVVM and RxSwift to enhance application responsiveness, significantly improving user experience.</li>
+                                <li>Mentored junior developers, contributing to improved team efficiency and faster project delivery.</li>
+                            </ul>
+                        </div>
+                        
+                        <div>
+                            <div class="flex justify-between">
+                                <h3 class="font-bold">Junior iOS Engineer</h3>
+                                <p class="text-gray-600">Oct 2015 - Dec 2016</p>
+                            </div>
+                            <p class="text-gray-700 italic">EB Pearls Pty Ltd, Nepal</p>
+                            <ul class="list-disc pl-5 mt-2 text-gray-700">
+                                <li>Contributed to the development of 6 iOS applications, integrating Core Location and MapKit to enhance functionality.</li>
+                                <li>Designed responsive UIs using auto-layout constraints, improving usability and user satisfaction.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <h2 class="text-xl font-bold text-primary border-b border-gray-300 pb-2 mb-3">Education</h2>
+                        <p class="font-bold">Bachelor's Degree in Computer Engineering</p>
+                    </div>
+                    
+                    <div>
+                        <h2 class="text-xl font-bold text-primary border-b border-gray-300 pb-2 mb-3">Skills</h2>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                                <h3 class="font-bold mb-2">Programming Languages</h3>
+                                <p class="text-gray-700">Swift, Objective-C, SwiftUI, C++</p>
+                            </div>
+                            <div>
+                                <h3 class="font-bold mb-2">Frameworks & Libraries</h3>
+                                <p class="text-gray-700">UIKit, Core Data, Core Animation, Core Location, MapKit, AVFoundation, RxSwift, Combine</p>
+                            </div>
+                            <div>
+                                <h3 class="font-bold mb-2">Architecture & Patterns</h3>
+                                <p class="text-gray-700">MVVM, Clean Architecture, MVC, SOLID Principles, Design Patterns, Protocol-Oriented Programming</p>
+                            </div>
+                            <div>
+                                <h3 class="font-bold mb-2">Tools & Technologies</h3>
+                                <p class="text-gray-700">Xcode, Git, CI/CD, Fastlane, CocoaPods, Swift Package Manager, Firebase, RESTful APIs, GraphQL, OAuth2</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mt-8 text-center">
+                    <button id="download-resume" class="bg-primary text-white px-6 py-3 rounded-lg hover:bg-secondary transition">Download Resume</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 70,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    if (!mobileMenu.classList.contains('hidden')) {
+                        mobileMenu.classList.add('hidden');
+                    }
+                }
+            });
+        });
+        
+        // Project modal functionality
+        const projectModal = document.getElementById('project-modal');
+        const closeModalBtn = document.getElementById('close-modal');
+        const modalTitle = document.getElementById('modal-title');
+        const modalContent = document.getElementById('modal-content');
+        const viewProjectBtns = document.querySelectorAll('.view-project-btn');
+        
+        // Project data
+        const projects = [
+            {
+                title: "E-Commerce App",
+                description: "A comprehensive e-commerce platform built for a major retail client. The application features a seamless shopping experience with advanced product filtering, secure payment processing, and personalized recommendations based on user behavior.",
+                technologies: ["Swift", "MVVM", "Core Data", "Firebase", "Stripe API"],
+                features: [
+                    "Real-time inventory tracking and notifications",
+                    "Secure payment processing with multiple options",
+                    "Offline mode with synchronized shopping cart",
+                    "AR product visualization for selected items",
+                    "Advanced search with voice recognition"
+                ],
+                challenges: "One of the main challenges was optimizing the app's performance while handling large product catalogs. I implemented efficient caching strategies and pagination to ensure smooth scrolling and quick load times even with thousands of products.",
+                outcome: "The app achieved a 4.8/5 rating on the App Store with over 100,000 downloads in the first quarter. Customer engagement increased by 35% and the average order value grew by 28% compared to the previous app version."
+            },
+            {
+                title: "Navigation & Maps App",
+                description: "A location-based service application developed for a transportation company. The app provides real-time navigation with custom map overlays, point-of-interest discovery, and route optimization.",
+                technologies: ["Swift", "MapKit", "Core Location", "Clean Architecture", "Firebase Realtime Database"],
+                features: [
+                    "Turn-by-turn navigation with voice guidance",
+                    "Custom map styles and overlays",
+                    "Offline maps for remote areas",
+                    "Real-time traffic updates and route adjustments",
+                    "Location sharing and ETA notifications"
+                ],
+                challenges: "Ensuring accurate location tracking while minimizing battery consumption was a significant challenge. I implemented intelligent location update algorithms that adjusted polling frequency based on user movement patterns.",
+                outcome: "The application reduced average journey times by 15% through optimized routing algorithms. User retention reached 78% after 3 months, significantly higher than industry averages for similar apps."
+            },
+            {
+                title: "Media Streaming App",
+                description: "A high-performance media streaming application for a content distribution network. The app delivers video and audio content with adaptive streaming capabilities, personalized recommendations, and social sharing features.",
+                technologies: ["Swift", "AVFoundation", "Combine", "MVVM", "HLS Streaming"],
+                features: [
+                    "Adaptive bitrate streaming based on network conditions",
+                    "Picture-in-picture and background playback",
+                    "Offline content download for premium users",
+                    "Content recommendation engine using machine learning",
+                    "Integrated social sharing and commenting system"
+                ],
+                challenges: "Managing memory efficiently while providing smooth playback transitions was challenging. I implemented advanced buffer management and preloading strategies to ensure uninterrupted viewing even during network fluctuations.",
+                outcome: "The app achieved a 40% increase in viewing time compared to the previous version. User-generated content sharing increased by 65%, creating a more engaged community around the platform."
+            }
+        ];
+        
+        // Open project modal
+        viewProjectBtns.forEach((btn, index) => {
+            btn.addEventListener('click', () => {
+                const project = projects[index];
+                modalTitle.textContent = project.title;
+                
+                modalContent.innerHTML = `
+                    <div class="space-y-6">
+                        <div>
+                            <h4 class="font-semibold text-gray-900 mb-2">Description</h4>
+                            <p class="text-gray-700">${project.description}</p>
+                        </div>
+                        
+                        <div>
+                            <h4 class="font-semibold text-gray-900 mb-2">Technologies</h4>
+                            <div class="flex flex-wrap gap-2">
+                                ${project.technologies.map(tech => `<span class="bg-accent text-primary px-3 py-1 rounded-full text-sm">${tech}</span>`).join('')}
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <h4 class="font-semibold text-gray-900 mb-2">Key Features</h4>
+                            <ul class="list-disc pl-5 text-gray-700">
+                                ${project.features.map(feature => `<li>${feature}</li>`).join('')}
+                            </ul>
+                        </div>
+                        
+                        <div>
+                            <h4 class="font-semibold text-gray-900 mb-2">Challenges & Solutions</h4>
+                            <p class="text-gray-700">${project.challenges}</p>
+                        </div>
+                        
+                        <div>
+                            <h4 class="font-semibold text-gray-900 mb-2">Outcome</h4>
+                            <p class="text-gray-700">${project.outcome}</p>
+                        </div>
+                    </div>
+                `;
+                
+                projectModal.classList.remove('hidden');
+                document.body.style.overflow = 'hidden';
+            });
+        });
+        
+        // Close project modal
+        closeModalBtn.addEventListener('click', () => {
+            projectModal.classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        });
+        
+        // Resume modal functionality
+        const resumeBtn = document.getElementById('resume-btn');
+        const resumeModal = document.getElementById('resume-modal');
+        const closeResumeModalBtn = document.getElementById('close-resume-modal');
+        const downloadResumeBtn = document.getElementById('download-resume');
+        
+        // Open resume modal
+        resumeBtn.addEventListener('click', () => {
+            resumeModal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        });
+        
+        // Close resume modal
+        closeResumeModalBtn.addEventListener('click', () => {
+            resumeModal.classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        });
+        
+        // Download resume functionality (simulated)
+        downloadResumeBtn.addEventListener('click', () => {
+            alert('Resume download functionality would be implemented here. In a real implementation, this would generate and download a PDF version of your resume.');
+        });
+        
+        // Close modals when clicking outside
+        window.addEventListener('click', (e) => {
+            if (e.target === projectModal) {
+                projectModal.classList.add('hidden');
+                document.body.style.overflow = 'auto';
+            }
+            if (e.target === resumeModal) {
+                resumeModal.classList.add('hidden');
+                document.body.style.overflow = 'auto';
+            }
+        });
+        
+        // Contact form submission (simulated)
+        const contactForm = document.getElementById('contact-form');
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+            
+            if (name && email && message) {
+                alert(`Thank you for your message, ${name}! In a real implementation, this would send your message to Ashish Karna.`);
+                contactForm.reset();
+            } else {
+                alert('Please fill in all fields before submitting.');
+            }
+        });
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'965391d9122a2dce',t:'MTc1MzUyOTQ3Ny4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
